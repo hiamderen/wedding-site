@@ -3,10 +3,54 @@ import { useSearchParams } from 'react-router-dom'
 /**
  * Invitation / Thiệp Cưới Section
  * - Đọc tên khách mời từ URL query param: ?guest=TenKhachMoi
- * - Hiển thị thiệp cưới cá nhân hóa
+ * - Hiển thị thiệp cưới cá nhân hóa phong cách Trung Hoa đỏ đô
  * - Nếu không có tên: hiển thị "Kính mời Quý Khách"
  * - Nút "Lưu thiệp" (in/screenshot)
  */
+
+// SVG diamond-lattice pattern encoded as data URI for card background
+const DIAMOND_PATTERN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' fill='none' stroke='%23C0152A' stroke-width='0.8' stroke-opacity='0.4'/%3E%3C/svg%3E")`
+
+const cardStyle = {
+  aspectRatio: '3/4',
+  maxWidth: '384px',
+  background: `${DIAMOND_PATTERN}, linear-gradient(160deg, #7B0A1E 0%, #A01020 60%, #7B0A1E 100%)`,
+  border: '2px solid #D4AF37',
+  boxShadow: 'inset 0 0 0 4px rgba(212,175,55,0.25), 0 20px 60px rgba(123,10,30,0.5)',
+}
+
+// Simple cute cat SVG (face silhouette)
+function CatIcon({ style }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      width="36"
+      height="36"
+      style={style}
+      fill="#D4AF37"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* Head */}
+      <ellipse cx="32" cy="36" rx="18" ry="16" />
+      {/* Left ear */}
+      <polygon points="14,24 10,10 22,20" />
+      {/* Right ear */}
+      <polygon points="50,24 54,10 42,20" />
+      {/* Eyes */}
+      <ellipse cx="25" cy="33" rx="3" ry="3.5" fill="#7B0A1E" />
+      <ellipse cx="39" cy="33" rx="3" ry="3.5" fill="#7B0A1E" />
+      {/* Nose */}
+      <ellipse cx="32" cy="40" rx="2" ry="1.5" fill="#C0152A" />
+      {/* Whiskers left */}
+      <line x1="14" y1="40" x2="27" y2="41" stroke="#C0152A" strokeWidth="1" />
+      <line x1="14" y1="43" x2="27" y2="42" stroke="#C0152A" strokeWidth="1" />
+      {/* Whiskers right */}
+      <line x1="50" y1="40" x2="37" y2="41" stroke="#C0152A" strokeWidth="1" />
+      <line x1="50" y1="43" x2="37" y2="42" stroke="#C0152A" strokeWidth="1" />
+    </svg>
+  )
+}
 
 export default function Invitation() {
   const [searchParams] = useSearchParams()
@@ -19,109 +63,133 @@ export default function Invitation() {
   }
 
   return (
-    <section id="invitation" className="py-20 md:py-28 bg-gradient-to-b from-pink-50 to-[#FEF9C3]">
-      <div className="container mx-auto px-6 max-w-2xl">
+    <section
+      id="invitation"
+      className="py-20 md:py-28"
+      style={{ background: 'linear-gradient(180deg, #7B0A1E 0%, #C0152A 100%)' }}
+    >
+      <div className="container mx-auto px-6 flex flex-col items-center">
         {/* Section header */}
         <div className="text-center mb-12">
-          <p className="font-inter uppercase tracking-[0.3em] text-pink-400 text-xs mb-3">
+          <p className="font-inter uppercase tracking-[0.3em] text-[#D4AF37] text-xs mb-3">
             Thiệp Mời
           </p>
-          <h2 className="font-playfair text-4xl md:text-5xl text-gray-800 mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl text-white mb-4">
             Thiệp Cưới
           </h2>
           <div className="section-divider" />
         </div>
 
-        {/* Invitation card */}
+        {/* Invitation card — 3:4 portrait */}
         <div
           id="invitation-card"
-          className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-pink-100"
+          className="relative rounded-2xl overflow-hidden w-full flex flex-col"
+          style={cardStyle}
         >
-          {/* Decorative top strip */}
-          <div className="h-2 bg-gradient-to-r from-pink-300 via-rose-300 to-yellow-200" />
-
-          <div className="px-8 md:px-14 py-12 text-center">
-            {/* Decorative border frame */}
-            <div className="border-2 border-pink-200 rounded-2xl p-8 relative">
-              {/* Corner flourishes */}
-              <div className="absolute top-2 left-2 text-pink-200 text-xl leading-none">❧</div>
-              <div className="absolute top-2 right-2 text-pink-200 text-xl leading-none rotate-90">❧</div>
-              <div className="absolute bottom-2 left-2 text-pink-200 text-xl leading-none -rotate-90">❧</div>
-              <div className="absolute bottom-2 right-2 text-pink-200 text-xl leading-none rotate-180">❧</div>
-
-              {/* Opening line */}
-              <p className="font-lora text-gray-500 text-sm mb-6 tracking-wide">
-                Trân trọng kính mời
-              </p>
-
-              {/* Guest name */}
-              <div className="mb-6">
-                {guestName ? (
-                  <p className="font-cormorant font-semibold text-4xl md:text-5xl text-pink-500 leading-snug">
-                    {guestName}
-                  </p>
-                ) : (
-                  <p className="font-playfair italic text-2xl md:text-3xl text-pink-400">
-                    Quý Khách
-                  </p>
-                )}
-              </div>
-
-              {/* Main invitation text */}
-              <p className="font-lora text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                đến dự lễ thành hôn của chúng tôi
-              </p>
-
-              {/* Couple names */}
-              <h3 className="font-cormorant font-semibold text-5xl md:text-6xl text-gray-800 mb-2 leading-tight">
-                Deren &amp; Valentina
-              </h3>
-              <p className="font-lora text-gray-400 text-xs mb-6">
-                Lưu Uy Danh &amp; Phan Huỳnh Cúc
-              </p>
-
-              {/* Divider */}
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-12 h-px bg-pink-200" />
-                <span className="text-pink-300">♥</span>
-                <div className="w-12 h-px bg-pink-200" />
-              </div>
-
-              {/* Event details */}
-              <div className="space-y-2 text-sm font-lora text-gray-600">
-                <p>
-                  <span className="font-medium text-gray-700">Ngày:</span>{' '}
-                  Thứ Năm, 01 tháng 01 năm 2026
-                </p>
-                <p>
-                  <span className="font-medium text-gray-700">Giờ:</span>{' '}
-                  17:30 – 21:00
-                </p>
-                <p>
-                  <span className="font-medium text-gray-700">Địa điểm:</span>{' '}
-                  Nhà Hàng Tiệc Cưới ABC, 123 Đường Lê Lợi, Quận 1, TP. HCM
-                </p>
-              </div>
-
-              {/* Closing */}
-              <p className="font-lora italic text-gray-400 text-sm mt-6">
-                Sự hiện diện của bạn là niềm vinh dự lớn nhất của chúng tôi.
-              </p>
-            </div>
+          {/* Cat motif — bottom-left */}
+          <div className="absolute bottom-4 left-4 opacity-80 pointer-events-none">
+            <CatIcon />
+          </div>
+          {/* Cat motif — bottom-right */}
+          <div className="absolute bottom-4 right-4 opacity-80 pointer-events-none">
+            <CatIcon style={{ transform: 'scaleX(-1)' }} />
           </div>
 
-          {/* Decorative bottom strip */}
-          <div className="h-2 bg-gradient-to-r from-yellow-200 via-rose-300 to-pink-300" />
+          {/* Inner gold double-border frame */}
+          <div
+            className="absolute inset-3 rounded-xl pointer-events-none"
+            style={{ border: '1px solid rgba(212,175,55,0.5)' }}
+          />
+          <div
+            className="absolute inset-[18px] rounded-lg pointer-events-none"
+            style={{ border: '1px solid rgba(212,175,55,0.3)' }}
+          />
+
+          {/* Card content */}
+          <div className="flex flex-col items-center justify-center flex-1 px-8 py-10 text-center relative z-10">
+            {/* Top gold ornament */}
+            <div className="text-[#D4AF37] text-2xl mb-4 tracking-widest">✦ ✦ ✦</div>
+
+            {/* Opening line */}
+            <p className="font-lora text-[#F5D78A] text-sm mb-4 tracking-widest uppercase">
+              Trân trọng kính mời
+            </p>
+
+            {/* Guest name */}
+            <div className="mb-4">
+              {guestName ? (
+                <p className="font-cormorant font-semibold text-3xl md:text-4xl text-white leading-snug">
+                  {guestName}
+                </p>
+              ) : (
+                <p className="font-playfair italic text-2xl md:text-3xl text-[#F5D78A]">
+                  Quý Khách
+                </p>
+              )}
+            </div>
+
+            {/* Main invitation text */}
+            <p className="font-lora text-[#F5D78A] text-sm md:text-base leading-relaxed mb-5">
+              đến dự lễ thành hôn của chúng tôi
+            </p>
+
+            {/* Couple names */}
+            <h3 className="font-cormorant font-semibold text-4xl md:text-5xl text-white mb-1 leading-tight">
+              Deren &amp; Valentina
+            </h3>
+            <p className="font-lora text-[#D4AF37] text-xs mb-5">
+              Lưu Uy Danh &amp; Phan Huỳnh Cúc
+            </p>
+
+            {/* Divider with paw prints */}
+            <div className="flex items-center justify-center gap-2 mb-5">
+              <div className="w-10 h-px" style={{ background: 'rgba(212,175,55,0.6)' }} />
+              <span className="text-[#D4AF37] text-sm">♥ 🐾 ♥</span>
+              <div className="w-10 h-px" style={{ background: 'rgba(212,175,55,0.6)' }} />
+            </div>
+
+            {/* Event details */}
+            <div className="space-y-1.5 text-xs md:text-sm font-lora text-[#F5D78A]">
+              <p>
+                <span className="font-semibold text-[#D4AF37]">Ngày:</span>{' '}
+                Thứ Năm, 01 tháng 01 năm 2026
+              </p>
+              <p>
+                <span className="font-semibold text-[#D4AF37]">Giờ:</span>{' '}
+                17:30 – 21:00
+              </p>
+              <p>
+                <span className="font-semibold text-[#D4AF37]">Địa điểm:</span>{' '}
+                Nhà Hàng Tiệc Cưới ABC, 123 Đường Lê Lợi, Quận 1, TP. HCM
+              </p>
+            </div>
+
+            {/* Closing */}
+            <p className="font-lora italic text-[#F5D78A] text-xs mt-5 leading-relaxed">
+              Sự hiện diện của bạn là niềm vinh dự lớn nhất của chúng tôi.
+            </p>
+
+            {/* Cat closing note */}
+            <p className="font-lora italic text-[#D4AF37] text-xs mt-3 opacity-80">
+              Và những người bạn lông mao của chúng tôi cũng chờ đón bạn 🐾
+            </p>
+
+            {/* Bottom gold ornament */}
+            <div className="text-[#D4AF37] text-xl mt-4 tracking-widest">✦ ✦ ✦</div>
+          </div>
         </div>
 
         {/* URL hint for personalization */}
         {!guestName && (
-          <div className="mt-6 bg-white/70 border border-pink-100 rounded-xl p-4 text-center">
-            <p className="font-inter text-gray-500 text-sm">
+          <div
+            className="mt-6 rounded-xl p-4 text-center w-full max-w-sm"
+            style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(212,175,55,0.4)' }}
+          >
+            <p className="font-inter text-[#F5D78A] text-sm mb-1">
               💡 Thêm tên khách mời vào URL để cá nhân hóa thiệp:
             </p>
-            <code className="text-pink-500 text-sm font-mono">
-              {typeof window !== 'undefined' ? window.location.origin : ''}/?guest=Tên+Khách+Mời
+            <code className="text-[#D4AF37] text-sm font-mono break-all">
+              {typeof window !== 'undefined' ? window.location.origin : ''}/wedding-site/?guest=Tên+Khách+Mời
             </code>
           </div>
         )}
@@ -130,7 +198,11 @@ export default function Invitation() {
         <div className="text-center mt-8">
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-inter font-medium px-8 py-3 rounded-full transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center gap-2 font-inter font-medium px-8 py-3 rounded-full transition-all shadow-md hover:shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, #D4AF37, #B8960C)',
+              color: '#7B0A1E',
+            }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clipRule="evenodd" />
