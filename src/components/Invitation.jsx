@@ -50,14 +50,14 @@ export default function Invitation() {
               <div className="absolute bottom-2 right-2 text-pink-200 text-xl leading-none rotate-180">❧</div>
 
               {/* Opening line */}
-              <p className="font-inter text-gray-500 text-sm mb-6 tracking-wide">
+              <p className="font-lora text-gray-500 text-sm mb-6 tracking-wide">
                 Trân trọng kính mời
               </p>
 
               {/* Guest name */}
               <div className="mb-6">
                 {guestName ? (
-                  <p className="font-vibes text-4xl md:text-5xl text-pink-500 leading-snug">
+                  <p className="font-cormorant font-semibold text-4xl md:text-5xl text-pink-500 leading-snug">
                     {guestName}
                   </p>
                 ) : (
@@ -68,15 +68,15 @@ export default function Invitation() {
               </div>
 
               {/* Main invitation text */}
-              <p className="font-playfair text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+              <p className="font-lora text-gray-700 text-base md:text-lg leading-relaxed mb-6">
                 đến dự lễ thành hôn của chúng tôi
               </p>
 
               {/* Couple names */}
-              <h3 className="font-vibes text-5xl md:text-6xl text-gray-800 mb-2 leading-tight">
+              <h3 className="font-cormorant font-semibold text-5xl md:text-6xl text-gray-800 mb-2 leading-tight">
                 Deren &amp; Valentina
               </h3>
-              <p className="font-inter text-gray-400 text-xs mb-6">
+              <p className="font-lora text-gray-400 text-xs mb-6">
                 Lưu Uy Danh &amp; Phan Huỳnh Cúc
               </p>
 
@@ -88,7 +88,7 @@ export default function Invitation() {
               </div>
 
               {/* Event details */}
-              <div className="space-y-2 text-sm font-inter text-gray-600">
+              <div className="space-y-2 text-sm font-lora text-gray-600">
                 <p>
                   <span className="font-medium text-gray-700">Ngày:</span>{' '}
                   Thứ Năm, 01 tháng 01 năm 2026
@@ -104,7 +104,7 @@ export default function Invitation() {
               </div>
 
               {/* Closing */}
-              <p className="font-playfair italic text-gray-400 text-sm mt-6">
+              <p className="font-lora italic text-gray-400 text-sm mt-6">
                 Sự hiện diện của bạn là niềm vinh dự lớn nhất của chúng tôi.
               </p>
             </div>
