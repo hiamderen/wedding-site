@@ -66,7 +66,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&auto=format&fit=crop&q=80")',
+            'url("https://images.unsplash.com/photo-1465495976277-a703d7f4abd2?w=1920&auto=format&fit=crop&q=85")',
         }}
       />
       {/* Dark romantic overlay */}
