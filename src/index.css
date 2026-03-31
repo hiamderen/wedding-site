@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply font-inter text-gray-800 bg-[#FDF6EC];
+    @apply font-inter text-gray-800 bg-[#FFF5F5];
   }
 
   h1, h2, h3 {
@@ -48,14 +48,14 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FDF6EC;
+  background: #FFF5F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #F9A8D4;
+  background: #C0152A;
   border-radius: 3px;
 }
 
 /* ===== Section Divider ===== */
 .section-divider {
-  @apply w-24 h-0.5 bg-pink-300 mx-auto my-4;
+  @apply w-24 h-0.5 bg-red-700 mx-auto my-4;
 }
