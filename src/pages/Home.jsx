@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Hero from '../components/Hero'
 import Story from '../components/Story'
+import Gallery from '../components/Gallery'
 import Location from '../components/Location'
 import QRCode from '../components/QRCode'
 import Invitation from '../components/Invitation'
@@ -11,6 +12,7 @@ import Invitation from '../components/Invitation'
 const navLinks = [
   { href: '#hero', label: 'Trang Chủ' },
   { href: '#story', label: 'Câu Chuyện' },
+  { href: '#gallery', label: 'Ảnh Cưới' },
   { href: '#location', label: 'Địa Điểm' },
   { href: '#qrcode', label: 'QR Code' },
   { href: '#invitation', label: 'Thiệp Mời' },
@@ -127,6 +129,7 @@ export default function Home() {
       <main>
         <Hero />
         <Story />
+        <Gallery />
         <Location />
         <QRCode />
         <Invitation />

@@ -33,15 +33,6 @@ const milestones = [
     icon: '🌸',
     bg: 'from-purple-50 to-pink-50',
   },
-  {
-    year: '2024',
-    date: 'Tháng 2, 2024',
-    title: 'Ngày cầu hôn',
-    description:
-      'Dưới ánh đèn lung linh của một nhà hàng lãng mạn nhìn ra thành phố, Deren quỳ xuống với nhẫn kim cương trên tay và hỏi câu mà anh đã ấp ủ từ lâu. Valentina gật đầu trong nước mắt hạnh phúc — và từ đó, họ bắt đầu hành trình mới.',
-    icon: '💍',
-    bg: 'from-rose-50 to-pink-50',
-  },
 ]
 
 export default function Story() {
