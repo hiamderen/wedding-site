@@ -59,18 +59,18 @@ const photos = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-white">
+    <section id="gallery" className="py-20 md:py-28" style={{ background: '#FFF0F0' }}>
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Section header */}
         <div className="text-center mb-14">
-          <p className="font-inter uppercase tracking-[0.3em] text-pink-400 text-xs mb-3">
+          <p className="font-inter uppercase tracking-[0.3em] text-[#D4AF37] text-xs mb-3">
             Our Moments
           </p>
-          <h2 className="font-playfair text-4xl md:text-5xl text-gray-800 mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl text-[#7B0A1E] mb-4">
             Khoảnh Khắc Của Chúng Tôi
           </h2>
           <div className="section-divider" />
-          <p className="font-inter text-gray-500 mt-4 max-w-md mx-auto text-sm md:text-base">
+          <p className="font-inter text-[#7B0A1E]/70 mt-4 max-w-md mx-auto text-sm md:text-base">
             Những khoảnh khắc đẹp nhất trong hành trình tình yêu của chúng tôi.
           </p>
         </div>

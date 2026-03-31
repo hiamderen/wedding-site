@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply font-inter text-gray-800 bg-[#FFF5F5];
+    @apply font-inter text-gray-800 bg-[#FFF0F0];
   }
 
   h1, h2, h3 {
@@ -48,7 +48,7 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF5F5;
+  background: #FFF0F0;
 }
 ::-webkit-scrollbar-thumb {
   background: #C0152A;
@@ -57,5 +57,6 @@
 
 /* ===== Section Divider ===== */
 .section-divider {
-  @apply w-24 h-0.5 bg-red-700 mx-auto my-4;
+  @apply w-24 h-0.5 mx-auto my-4;
+  background: #D4AF37;
 }

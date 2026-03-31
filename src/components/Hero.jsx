@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import CatIcon from './CatIcon'
 
 /**
  * Hero Section
@@ -40,7 +41,7 @@ function CountdownUnit({ value, label }) {
       <span className="text-3xl md:text-5xl font-playfair font-bold text-white drop-shadow-lg">
         {String(value).padStart(2, '0')}
       </span>
-      <span className="text-xs md:text-sm uppercase tracking-widest text-pink-100 mt-1">
+      <span className="text-xs md:text-sm uppercase tracking-widest text-[#F5D78A] mt-1">
         {label}
       </span>
     </div>
@@ -76,10 +77,18 @@ export default function Hero() {
       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3/4 md:w-1/2 h-px bg-white/30" />
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-3/4 md:w-1/2 h-px bg-white/30" />
 
+      {/* Cat decorations – bottom corners */}
+      <div className="absolute bottom-14 left-6 opacity-50 pointer-events-none hidden md:block">
+        <CatIcon size={40} />
+      </div>
+      <div className="absolute bottom-14 right-6 opacity-50 pointer-events-none hidden md:block">
+        <CatIcon size={40} style={{ transform: 'scaleX(-1)' }} />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 text-center px-6 animate-fade-in">
         {/* Save the date label */}
-        <p className="uppercase tracking-[0.3em] text-pink-200 text-xs md:text-sm mb-4 font-inter font-light">
+        <p className="uppercase tracking-[0.3em] text-[#F5D78A] text-xs md:text-sm mb-4 font-inter font-light">
           Save The Date
         </p>
 
@@ -89,15 +98,15 @@ export default function Hero() {
         </h1>
 
         {/* Full names in Vietnamese */}
-        <p className="font-playfair italic text-pink-100 text-base md:text-xl mb-6 tracking-wide">
+        <p className="font-playfair italic text-[#F5D78A] text-base md:text-xl mb-6 tracking-wide">
           Lưu Uy Danh &amp; Phan Huỳnh Cúc
         </p>
 
         {/* Decorative divider */}
         <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="w-16 md:w-24 h-px bg-pink-300/60" />
-          <span className="text-pink-300 text-lg">♥</span>
-          <div className="w-16 md:w-24 h-px bg-pink-300/60" />
+          <div className="w-16 md:w-24 h-px" style={{ background: 'rgba(212,175,55,0.6)' }} />
+          <span className="text-[#D4AF37] text-lg">♥</span>
+          <div className="w-16 md:w-24 h-px" style={{ background: 'rgba(212,175,55,0.6)' }} />
         </div>
 
         {/* Wedding date */}
@@ -106,8 +115,11 @@ export default function Hero() {
         </p>
 
         {/* Countdown timer */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-5 inline-block border border-white/20">
-          <p className="text-pink-200 text-xs uppercase tracking-widest mb-3 font-inter">
+        <div
+          className="backdrop-blur-sm rounded-2xl px-6 py-5 inline-block"
+          style={{ background: 'rgba(123,10,30,0.5)', border: '1px solid rgba(212,175,55,0.3)' }}
+        >
+          <p className="text-[#D4AF37] text-xs uppercase tracking-widest mb-3 font-inter">
             Đếm ngược đến ngày trọng đại
           </p>
           <div className="flex items-center justify-center">

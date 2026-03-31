@@ -5,6 +5,7 @@ import Gallery from '../components/Gallery'
 import Location from '../components/Location'
 import QRCode from '../components/QRCode'
 import Invitation from '../components/Invitation'
+import CatIcon from '../components/CatIcon'
 
 /**
  * Navbar - Fixed top navigation with smooth scroll links
@@ -31,16 +32,15 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        scrolled ? 'backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
+      style={scrolled ? { background: 'rgba(123,10,30,0.95)' } : {}}
     >
       <div className="container mx-auto px-6 max-w-5xl flex items-center justify-between h-16">
         {/* Logo / couple name */}
         <a
           href="#hero"
-          className={`font-vibes text-2xl transition-colors ${
-            scrolled ? 'text-pink-500' : 'text-white'
-          }`}
+          className="font-vibes text-2xl transition-colors text-[#D4AF37]"
         >
           D &amp; V
         </a>
@@ -51,9 +51,7 @@ function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`font-inter text-sm transition-colors hover:text-pink-400 ${
-                  scrolled ? 'text-gray-600' : 'text-white/90'
-                }`}
+                className="font-inter text-sm transition-colors hover:text-[#D4AF37] text-white/90"
               >
                 {link.label}
               </a>
@@ -63,9 +61,7 @@ function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className={`md:hidden p-2 rounded transition-colors ${
-            scrolled ? 'text-gray-700' : 'text-white'
-          }`}
+          className="md:hidden p-2 rounded transition-colors text-white"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -81,13 +77,16 @@ function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-pink-100 px-6 py-4">
+        <div
+          className="md:hidden backdrop-blur-md border-t px-6 py-4"
+          style={{ background: 'rgba(123,10,30,0.97)', borderColor: 'rgba(212,175,55,0.3)' }}
+        >
           <ul className="space-y-3">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="font-inter text-gray-700 text-sm block hover:text-pink-400 transition-colors"
+                  className="font-inter text-sm block hover:text-[#D4AF37] transition-colors text-white/90"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -106,12 +105,20 @@ function Navbar() {
  */
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-10 text-center">
-      <p className="font-vibes text-3xl text-pink-300 mb-2">Deren &amp; Valentina</p>
-      <p className="font-inter text-gray-400 text-sm">
+    <footer
+      className="text-white py-10 text-center"
+      style={{ background: 'linear-gradient(180deg, #4A0010 0%, #2D0009 100%)' }}
+    >
+      {/* Decorative cats */}
+      <div className="flex items-center justify-center gap-4 mb-3 opacity-70">
+        <CatIcon size={28} />
+        <CatIcon size={28} style={{ transform: 'scaleX(-1)' }} />
+      </div>
+      <p className="font-vibes text-3xl text-[#D4AF37] mb-2">Deren &amp; Valentina</p>
+      <p className="font-inter text-[#F5D78A]/70 text-sm">
         01.01.2026 · TP. Hồ Chí Minh · Việt Nam
       </p>
-      <div className="mt-4 flex items-center justify-center gap-2 text-pink-400">
+      <div className="mt-4 flex items-center justify-center gap-2 text-[#D4AF37]">
         <span className="text-xs font-inter">Made with</span>
         <span>♥</span>
       </div>

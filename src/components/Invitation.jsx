@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
+import CatIcon from './CatIcon'
 
 /**
  * Invitation / Thiệp Cưới Section
@@ -13,43 +14,10 @@ const DIAMOND_PATTERN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org
 
 const cardStyle = {
   aspectRatio: '3/4',
-  maxWidth: '384px',
+  maxWidth: '480px',
   background: `${DIAMOND_PATTERN}, linear-gradient(160deg, #7B0A1E 0%, #A01020 60%, #7B0A1E 100%)`,
   border: '2px solid #D4AF37',
   boxShadow: 'inset 0 0 0 4px rgba(212,175,55,0.25), 0 20px 60px rgba(123,10,30,0.5)',
-}
-
-// Simple cute cat SVG (face silhouette)
-function CatIcon({ style }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      width="36"
-      height="36"
-      style={style}
-      fill="#D4AF37"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* Head */}
-      <ellipse cx="32" cy="36" rx="18" ry="16" />
-      {/* Left ear */}
-      <polygon points="14,24 10,10 22,20" />
-      {/* Right ear */}
-      <polygon points="50,24 54,10 42,20" />
-      {/* Eyes */}
-      <ellipse cx="25" cy="33" rx="3" ry="3.5" fill="#7B0A1E" />
-      <ellipse cx="39" cy="33" rx="3" ry="3.5" fill="#7B0A1E" />
-      {/* Nose */}
-      <ellipse cx="32" cy="40" rx="2" ry="1.5" fill="#C0152A" />
-      {/* Whiskers left */}
-      <line x1="14" y1="40" x2="27" y2="41" stroke="#C0152A" strokeWidth="1" />
-      <line x1="14" y1="43" x2="27" y2="42" stroke="#C0152A" strokeWidth="1" />
-      {/* Whiskers right */}
-      <line x1="50" y1="40" x2="37" y2="41" stroke="#C0152A" strokeWidth="1" />
-      <line x1="50" y1="43" x2="37" y2="42" stroke="#C0152A" strokeWidth="1" />
-    </svg>
-  )
 }
 
 export default function Invitation() {
@@ -134,7 +102,7 @@ export default function Invitation() {
             </p>
 
             {/* Couple names */}
-            <h3 className="font-cormorant font-semibold text-4xl md:text-5xl text-white mb-1 leading-tight">
+            <h3 className="font-cormorant font-semibold text-3xl md:text-4xl text-white mb-1 leading-tight whitespace-nowrap">
               Deren &amp; Valentina
             </h3>
             <p className="font-lora text-[#D4AF37] text-xs mb-5">
