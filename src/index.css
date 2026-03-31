@@ -1,0 +1,53 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base Styles ===== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-inter text-gray-800 bg-[#FDF6EC];
+  }
+
+  h1, h2, h3 {
+    @apply font-playfair;
+  }
+}
+
+/* ===== Custom Utilities ===== */
+@layer utilities {
+  .font-vibes {
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FDF6EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #F9A8D4;
+  border-radius: 3px;
+}
+
+/* ===== Section Divider ===== */
+.section-divider {
+  @apply w-24 h-0.5 bg-pink-300 mx-auto my-4;
+}
